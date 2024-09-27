@@ -14,12 +14,12 @@ export default class HashMap{
 
     set(key,value){
         const bucketIndex=this.hash(key);
-        let bucketItem=this.buckets[bucketIndex];
-
+        const bucketItem=this.buckets[bucketIndex];
         if(!bucketItem){
-            bucketItem=[];
-            this.bucket[bucketIndex]=bucketItem;
-        }
+            this.buckets[bucketIndex]=[];
+            this.buckets[bucketIndex].push([key,value]);
+            return;            
+        }else{
 
         for(let i=0;i<bucketItem.length;i++){
             if(bucketItem[i][0]===key){
@@ -28,7 +28,7 @@ export default class HashMap{
                 bucketItem[i][1]=value;
                 return;
             };
-        }
+        }}
         bucketItem.push([key,value]);
     }
 }
