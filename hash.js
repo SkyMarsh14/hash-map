@@ -59,10 +59,11 @@ export default class HashMap {
 
   remove(key) {
     if (this.has(key)) {
-      this.buckets[this.hash] = this.buckets[this.hash(key)].filter((item) => {
-        --this.capacity;
+      this.buckets[this.hash(key)] = this.buckets[this.hash(key)].filter((item) => {
         return !(item[0] === key);
       });
+      --this.capacity;
+      return true;
     }
     return false;
   }
@@ -100,7 +101,7 @@ export default class HashMap {
     return valueArray;
   }
   entries(){
-    pairArray=[];
+    let pairArray=[];
 
     for(let i=0;i<this.buckets.length;i++){
         const bucket=this.buckets[i];

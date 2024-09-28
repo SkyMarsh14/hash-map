@@ -13,4 +13,7 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
-console.log(test.buckets);
+test.set('apple','green')
+console.log(test.remove('apple'))
+console.log(test.clear())
+console.log(test.entries())
