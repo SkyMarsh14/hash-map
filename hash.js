@@ -16,8 +16,12 @@ export default class HashMap {
   set(key, value) {
     let bucketSize = 0.8 * this.capacity;
     //grow bucket according to load factor
-    if (bucketSize < this.buckets.length) {
+    if (bucketSize > this.buckets.length) {
+        const entries = this.entries();
       this.buckets = new Array(this.buckets.length * 2);
+      entries.forEach((entry)=>{
+        this.set(entry[0],entry[1]);
+      })
     }
     const bucketIndex = this.hash(key);
     const bucketItem = this.buckets[bucketIndex];
