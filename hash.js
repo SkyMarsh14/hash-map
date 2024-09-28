@@ -70,7 +70,42 @@ export default class HashMap {
     this.capacity = 0;
   }
   keys(){
-    
+    let keysArray=[];
+    for(let i=0;i<this.buckets.length;i++){
+        const bucket = this.buckets[i];
+
+        if(bucket){
+            for(let j=0;j<bucket.length;j++){
+                keysArray.push(bucket[j][0]);
+            }
+        }
+    }
+    return keysArray;
+  }
+  values(){
+    let valueArray=[];
+    for(let i=0;i<this.buckets.length;i++){
+        const bucket=this.buckets[i];
+
+        if(bucket){
+            for(let j=0;j<bucket.length;j++){
+                valueArray.push(bucket[j][1])
+            }
+        }
+    }
+    return valueArray;
+  }
+  entries(){
+    pairArray=[];
+
+    for(let i=0;i<this.buckets.length;i++){
+        const bucket=this.buckets[i];
+
+        if(bucket){
+            pairArray.push(bucket);
+        }
+    }
+    return pairArray;
   }
 }
 
